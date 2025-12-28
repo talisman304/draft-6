@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional profile page for Dr. Charles Brandon, dentist." />
+
+  <title>Dr. Charles Brandon, DDS</title>
+
+  <!-- Modern, minimal font pairing (system + optional Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --bg2:#0f1730;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.52);
+      --line: rgba(255,255,255,.14);
+      --accent: #59d9ff;
+      --accent2:#a78bfa;
+      --good:#34d399;
+      --shadow: 0 22px 55px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(89,217,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 85% 15%, rgba(167,139,250,.18), transparent 55%),
+        radial-gradient(700px 500px at 35% 85%, rgba(52,211,153,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height: 1.55;
+      letter-spacing: -0.01em;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(11,16,32,.6);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+    .mark{
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background:
+        radial-gradient(14px 14px at 30% 35%, rgba(255,255,255,.65), rgba(255,255,255,.0) 60%),
+        linear-gradient(135deg, rgba(89,217,255,.95), rgba(167,139,250,.95));
+      box-shadow: 0 14px 30px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap: 18px;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .navlinks a{ padding: 8px 10px; border-radius: 12px; }
+    .navlinks a:hover{ background: rgba(255,255,255,.06); text-decoration: none; }
+
+    .cta{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select: none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.24); text-decoration:none; }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(89,217,255,.92), rgba(167,139,250,.92));
+      border-color: rgba(255,255,255,.26);
+      color: rgba(9,11,18,.95);
+      box-shadow: 0 18px 40px rgba(89,217,255,.18);
+    }
+    .btn.primary:hover{ box-shadow: 0 22px 52px rgba(167,139,250,.18); }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card{
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(500px 220px at 20% 10%, rgba(89,217,255,.22), transparent 60%),
+                  radial-gradient(420px 220px at 85% 0%, rgba(167,139,250,.18), transparent 55%);
+      pointer-events:none;
+      filter: blur(0px);
+      opacity:.9;
+    }
+    .hero-card > *{ position: relative; }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+      width: fit-content;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--good);
+      box-shadow: 0 0 0 6px rgba(52,211,153,.10);
+    }
+
+    h1{
+      margin: 16px 0 10px;
+      font-size: clamp(30px, 3.2vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+    .subtitle{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .stat{
+      padding: 14px 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .stat .num{ font-size: 18px; font-weight: 750; letter-spacing: -0.02em; }
+    .stat .lbl{ font-size: 12px; color: var(--muted2); margin-top: 2px; }
+
+    .profile-card{
+      padding: 22px;
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .portrait{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.16);
+      background:
+        radial-gradient(120px 120px at 25% 20%, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      aspect-ratio: 4 / 3;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Replace this SVG with a real headshot (recommended: 1200x900) */
+    .portrait svg{ width: 78%; opacity: .9; }
+
+    .profile-meta{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .name{
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      font-size: 16px;
+    }
+    .role{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .chip{
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    /* Sections */
+    section{
+      padding: 18px 0;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 34px 0 16px;
+    }
+
+    h2{
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hint{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 64ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .tile{
+      padding: 18px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      min-height: 136px;
+    }
+    .tile:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+    .tile h3{
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+    .tile p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .panel{
+      padding: 20px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .list li{ margin: 8px 0; }
+
+    /* Footer */
+    footer{
+      padding: 40px 0 60px;
+      color: var(--muted2);
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top: 36px;
+    }
+
+    .foot{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items:center;
+      justify-content: space-between;
+    }
+
+    .small{ font-size: 13px; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .two{ grid-template-columns: 1fr; }
+      .stats{ grid-template-columns: 1fr; }
+      .navlinks{ display:none; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .btn, .tile{ transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav" aria-label="Top navigation">
+      <a class="brand" href="#top">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Dr. Charles Brandon, DDS</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#expertise">Clinical Focus</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="https://drcharlesbrandon.com/dentists/" target="_blank" rel="noreferrer">Full Bio</a>
+        <a class="btn primary" href="#contact">Request Appointment</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-grid">
+        <div class="card hero-card">
+          <div class="kicker"><span class="dot" aria-hidden="true"></span> Patient-centered dentistry • Modern techniques • Calm, professional care</div>
+
+          <h1>Modern dental care with a clinical-first, comfort-forward approach.</h1>
+          <p class="subtitle">
+            This is a clean, single-page profile template for Dr. Charles Brandon. Replace the placeholder
+            details below with the exact biography, education, affiliations, and office contact information
+            from the referenced page.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">Book a Consultation</a>
+            <a class="btn" href="#expertise">Explore Services</a>
+            <a class="btn" href="#credentials">View Credentials</a>
+          </div>
+
+          <div class="stats" aria-label="Highlights">
+            <div class="stat">
+              <div class="num">Comprehensive</div>
+              <div class="lbl">Restorative & preventive care</div>
+            </div>
+            <div class="stat">
+              <div class="num">Evidence-based</div>
+              <div class="lbl">Conservative treatment planning</div>
+            </div>
+            <div class="stat">
+              <div class="num">Modern workflow</div>
+              <div class="lbl">Digital-first patient experience</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card profile-card" aria-label="Profile card">
+          <div class="portrait" role="img" aria-label="Portrait placeholder">
+            <!-- Simple abstract portrait placeholder; replace with real headshot -->
+            <svg viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g" x1="80" y1="70" x2="520" y2="380" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="rgba(89,217,255,.9)"/>
+                  <stop offset="1" stop-color="rgba(167,139,250,.9)"/>
+                </linearGradient>
+              </defs>
+              <path d="M138 332c24-64 78-98 162-98s141 34 162 98" stroke="url(#g)" stroke-width="26" stroke-linecap="round"/>
+              <path d="M210 178c0-54 40-98 90-98s90 44 90 98-40 98-90 98-90-44-90-98z" stroke="url(#g)" stroke-width="26"/>
+              <path d="M120 392c52 26 112 40 180 40s128-14 180-40" stroke="rgba(255,255,255,.42)" stroke-width="10" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="profile-meta">
+            <div class="name">Dr. Charles Brandon, DDS</div>
+            <div class="role">Dentist • Restorative & Preventive Care</div>
+            <div class="chips" aria-label="Key tags">
+              <span class="chip">Digital Dentistry</span>
+              <span class="chip">Comprehensive Exams</span>
+              <span class="chip">Patient Education</span>
+            </div>
+          </div>
+
+          <div>
+            <a class="btn" href="#contact" style="width:100%;">Contact & Location</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-label="About">
+      <div class="section-title">
+        <h2>About</h2>
+        <p class="hint">Use this section for a concise biography and clinical philosophy.</p>
+      </div>
+
+      <div class="two">
+        <div class="panel">
+          <h3 style="margin:0 0 10px; letter-spacing:-0.02em;">Clinical philosophy</h3>
+          <p style="margin:0; color:var(--muted);">
+            Replace with the official bio: treatment approach, patient communication style, and what
+            differentiates Dr. Brandon’s care model.
+          </p>
+        </div>
+        <div class="panel">
+          <h3 style="margin:0 0 10px; letter-spacing:-0.02em;">What patients can expect</h3>
+          <ul class="list">
+            <li>Clear, plain-language explanations and options</li>
+            <li>Conservative, evidence-based recommendations</li>
+            <li>Attention to comfort, scheduling, and follow-through</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise" aria-label="Clinical Focus">
+      <div class="section-title">
+        <h2>Clinical Focus</h2>
+        <p class="hint">Swap these tiles with the exact services and focus areas listed on the source page.</p>
+      </div>
+
+      <div class="grid">
+        <div class="tile">
+          <h3>Preventive Dentistry</h3>
+          <p>Exams, cleanings, and long-term strategies to preserve oral health.</p>
+        </div>
+        <div class="tile">
+          <h3>Restorative Care</h3>
+          <p>Fillings, crowns, bridges, and durable solutions designed for function and aesthetics.</p>
+        </div>
+        <div class="tile">
+          <h3>Cosmetic Enhancements</h3>
+          <p>Whitening and cosmetic options that support natural-looking results.</p>
+        </div>
+        <div class="tile">
+          <h3>Digital Diagnostics</h3>
+          <p>Modern imaging and planning to support precision and patient understanding.</p>
+        </div>
+        <div class="tile">
+          <h3>Comprehensive Treatment Planning</h3>
+          <p>Structured, step-by-step plans aligned to your priorities and timeline.</p>
+        </div>
+        <div class="tile">
+          <h3>Patient Education</h3>
+          <p>Actionable guidance to help patients maintain results between visits.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section id="credentials" aria-label="Credentials">
+      <div class="section-title">
+        <h2>Credentials</h2>
+        <p class="hint">Add education, licenses, memberships, awards, publications, and continuing education.</p>
+      </div>
+
+      <div class="two">
+        <div class="panel">
+          <h3 style="margin:0 0 10px; letter-spacing:-0.02em;">Education & training</h3>
+          <ul class="list">
+            <li>Doctor of Dental Surgery (DDS) — <em>Institution</em></li>
+            <li>Residency / Advanced Training — <em>Program</em></li>
+            <li>Continuing Education — <em>Focus areas</em></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3 style="margin:0 0 10px; letter-spacing:-0.02em;">Professional affiliations</h3>
+          <ul class="list">
+            <li>American Dental Association (ADA) — <em>optional</em></li>
+            <li>State / Local Dental Societies — <em>optional</em></li>
+            <li>Additional memberships — <em>optional</em></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-label="Contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p class="hint">Replace placeholders with the practice address, phone, email, and hours.</p>
+      </div>
+
+      <div class="two">
+        <div class="panel">
+          <h3 style="margin:0 0 10px; letter-spacing:-0.02em;">Office details</h3>
+          <p style="margin:0; color:var(--muted);">
+            <strong>Practice:</strong> <span style="color:var(--text);">[Practice Name]</span><br />
+            <strong>Address:</strong> <span style="color:var(--text);">[Street, City, State ZIP]</span><br />
+            <strong>Phone:</strong> <a href="tel:+10000000000">[+1 (000) 000-0000]</a><br />
+            <strong>Email:</strong> <a href="mailto:office@example.com">[office@example.com]</a>
+          </p>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" href="tel:+10000000000">Call Now</a>
+            <a class="btn" href="mailto:office@example.com">Email Office</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 10px; letter-spacing:-0.02em;">Request an appointment</h3>
+          <form onsubmit="event.preventDefault(); alert('Replace this demo form handler with your booking workflow.');">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+              <label style="display:flex; flex-direction:column; gap:6px;">
+                <span class="small" style="color:var(--muted);">First name</span>
+                <input required name="first" placeholder="Jane" style="padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.05); color: var(--text); outline:none;" />
+              </label>
+              <label style="display:flex; flex-direction:column; gap:6px;">
+                <span class="small" style="color:var(--muted);">Last name</span>
+                <input required name="last" placeholder="Doe" style="padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.05); color: var(--text); outline:none;" />
+              </label>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px;">
+              <label style="display:flex; flex-direction:column; gap:6px;">
+                <span class="small" style="color:var(--muted);">Phone</span>
+                <input required name="phone" placeholder="(000) 000-0000" style="padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.05); color: var(--text); outline:none;" />
+              </label>
+              <label style="display:flex; flex-direction:column; gap:6px;">
+                <span class="small" style="color:var(--muted);">Preferred day</span>
+                <input name="day" placeholder="Mon–Fri" style="padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.05); color: var(--text); outline:none;" />
+              </label>
+            </div>
+
+            <label style="display:flex; flex-direction:column; gap:6px; margin-top:10px;">
+              <span class="small" style="color:var(--muted);">Reason for visit</span>
+              <textarea name="reason" rows="4" placeholder="Tell us what you need help with…" style="padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.05); color: var(--text); outline:none; resize: vertical;"></textarea>
+            </label>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px;">
+              <button class="btn primary" type="submit">Submit Request</button>
+              <span class="small" style="color:var(--muted2);">This form is a front-end template; connect it to your booking system.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap foot">
+        <div class="small">© <span id="y"></span> Dr. Charles Brandon. All rights reserved.</div>
+        <div class="small">
+          <a href="#top">Back to top</a> •
+          <a href="https://drcharlesbrandon.com/dentists/" target="_blank" rel="noreferrer">Source profile</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Set current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth scrolling for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
